@@ -22,6 +22,8 @@ Rails.application.config.assets.precompile.concat \
     swagger_ui.css
     swagger_ui_print.css
     swagger_ui_screen.css
+    global.css
+    index.css
   ]
 
 # Precompile all available locales

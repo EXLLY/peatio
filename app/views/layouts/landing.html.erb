@@ -1,25 +1,69 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--  <head>-->
+<!--    <link href="/favicon.ico" rel="shortcut icon"/>-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>-->
+    <%#= render 'shared/meta' %>
+    <%#= render 'shared/sentry' %>
+    <%#= csrf_meta_tags %>
+
+    <%#= stylesheet_link_tag 'application', media: 'all' %>
+    <%#= custom_stylesheet_link_tag_for :main %>
+
+    <%#= include_gon %>
+    <%#= javascript_include_tag "locales/#{I18n.locale}" %>
+    <%#= javascript_include_tag 'application' %>
+<!--  </head>-->
+
+<!--  <body id="<%#= body_id %>" data-lang="<%#= locale_name %>">-->
+<!--    <div id="wrap">-->
+      <%#= yield %>
+<!--      <div id="push"></div>-->
+<!--    </div>-->
+    <%#= render 'shared/footer' %>
+<!--  </body>-->
+<!--</html>-->
+
+
+
+<!DOCTYPE HTML>
 <html lang="en">
-  <head>
-    <link href="/favicon.ico" rel="shortcut icon"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <%= render 'shared/meta' %>
-    <%= render 'shared/sentry' %>
-    <%= csrf_meta_tags %>
+<head>
+  <link href="/favicon.ico" rel="shortcut icon"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <%= render 'shared/meta' %>
+  <%= render 'shared/sentry' %>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= custom_stylesheet_link_tag_for :main %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= stylesheet_link_tag 'global' %>
+  <%= stylesheet_link_tag 'index'%>
+  <%= custom_stylesheet_link_tag_for :main %>
 
-    <%= include_gon %>
-    <%= javascript_include_tag "locales/#{I18n.locale}" %>
-    <%= javascript_include_tag 'application' %>
-  </head>
-
-  <body id="<%= body_id %>" data-lang="<%= locale_name %>">
-    <div id="wrap">
-      <%= yield %>
-      <div id="push"></div>
+  <%= include_gon %>
+  <%= javascript_include_tag "locales/#{I18n.locale}" %>
+  <%= javascript_include_tag 'application' %>
+</head>
+<body id="<%= body_id %>" data-lang="<%= locale_name %>">
+<div class="flex-box vertical g-background home-index">
+  <header>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <a href="#"><%= image_tag "logo.png" %></a>
+        </div>
+        <div class="col-md-8 text-right">
+          <% unless current_user %>
+            <% provider = ENV['OAUTH2_SIGN_IN_PROVIDER'] %>
+            <a href="/auth/<%= provider == 'google' ? 'google_oauth2' : provider %>">LOGIN</a>
+            <a href="<%= ENV['BARONG_DOMAIN']+'/accounts/sign_up' %>">REGISTER</a>
+          <% end %>
+        </div>
+      </div>
     </div>
-    <%= render 'shared/footer' %>
-  </body>
+  </header>
+  <%= yield %>
+  <%= render 'shared/footer' %>
+</div>
+</body>
 </html>

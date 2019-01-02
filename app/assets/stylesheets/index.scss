@@ -1,0 +1,147 @@
+.home-index header{
+  background-color:rgba(0, 0, 0, 0.16);
+}
+.home-index footer{
+  background-color:rgba(0, 0, 0, 0.2);
+}
+.login-container{
+  width:400px;
+  margin:0 auto;
+  background-color:#FFF;
+  border-radius: 4px;
+}
+.login-button{
+  padding-top:40px;
+}
+.login-button .row{padding-top:6px;}
+.overview-index{
+  padding:20px 0;
+}
+.overview-index .warning{
+  display: inline-block;
+  padding:1px 10px 1px 25px;
+  background-color:#e0e0e0;
+  color:#707277;
+  font-size:12px;
+  border-radius:5em;
+  background-image: url(asset_path('profile/warning.png'));
+  background-repeat: no-repeat;
+  background-position: 5px 50%;
+  background-size: auto 70%;
+}
+.overview-index .text-center{
+  position:relative;
+  padding-bottom:20px;
+}
+.overview-index .text-center:after{
+  position: absolute;
+  content: "";
+  display: block;
+  top:0;
+  bottom:0;
+  right:0;
+  border-right:solid 1px #dbdbdb;
+}
+.overview-info{
+  padding:30px;
+  border-top:solid 1px #092031;
+}
+.overview-info .row{
+  margin-top:15px;
+  margin-bottom:15px;
+}
+.overview-info .row > :first-child{
+  font-weight:700;
+}
+.overview-info a{
+  color:#2e96f0;
+  text-decoration: underline;
+}
+.verifi-step:before,.verifi-step:after{
+  display:table;
+  content:"";
+}
+.verifi-step:after{
+  clear:both;
+}
+.verifi-step{
+  margin:0;
+  padding:0;
+}
+.verifi-step li{
+  list-style:none;
+  position:relative;
+  float:left;
+  width:33.333%;
+  text-align:center;
+  overflow:hidden;
+}
+.verifi-step li span{
+  display:block;
+  color:#939393;
+  font-size:16px;
+  padding-top:15px;
+  padding-bottom:20px;
+}
+.verifi-step li i{
+  display:block;
+  margin:0 auto;
+  width:16px;
+  height:16px;
+  border-style:solid;
+  border-width:2px;
+  border-color:#dbdbdb;
+  background-color:#dbdbdb;
+  border-radius: 50%;
+}
+.verifi-step li i:before,
+.verifi-step li i:after{
+  position:absolute;
+  content:"";
+  display:block;
+  height:0;
+  width:100%;
+  border-style:solid;
+  border-color:#dbdbdb;
+  border-width:1px 0 0;
+  bottom:7px;
+}
+.verifi-step li i:before{left:-50%;margin-left:-8px;}
+.verifi-step li i:after{left:50%;margin-left:8px;}
+.verifi-step li:first-child i:before{display:none;}
+.verifi-step li:last-child i:after{display:none;}
+.verifi-step.step1 li:nth-child(1) i{
+  border-color:#2e96f0;
+  background-color:#FFF;
+}
+.verifi-step.step1 li:nth-child(1) span{
+  color:#6f6f69;
+}
+.verifi-step.step2 li:nth-child(1) i,
+.verifi-step.step3 li:nth-child(1) i,
+.verifi-step.step3 li:nth-child(2) i{
+  border-color:#2e96f0;
+  background-color:#2e96f0;
+}
+.verifi-step.step2 li:nth-child(1) i:after,
+.verifi-step.step2 li:nth-child(2) i:before,
+.verifi-step.step3 li:nth-child(1) i:after,
+.verifi-step.step3 li:nth-child(2) i:after,
+.verifi-step.step3 li:nth-child(2) i:before,
+.verifi-step.step3 li:nth-child(3) i:before{
+  border-color:#2e96f0;
+}
+.verifi-step.step2 li:nth-child(1) span,
+.verifi-step.step3 li:nth-child(1) span,
+.verifi-step.step3 li:nth-child(2) span{
+  color:#2e96f0;
+}
+.verifi-step.step2 li:nth-child(2) i,
+.verifi-step.step3 li:nth-child(3) i{
+  border-color:#2e96f0;
+  background-color:#FFF;
+}
+.verifi-step.step2 li:nth-child(2) span,
+.verifi-step.step3 li:nth-child(3) span{
+  color:#6f6f69;
+}

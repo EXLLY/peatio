@@ -1,7 +1,10 @@
 <% content_for :guide_title do %>
   <h3 class="profile-email">
     <i class="fa fa-user"></i><span><%= current_user.email %></span>
+    <i class="fa fa-user"></i><span><%= current_user.level %></span>
   </h3>
+  <%= link_to 'Get Bind 2-step verification', ENV["BARONG_DOMAIN"]+"/security" %>
+  <%= link_to 'Change your password', ENV["BARONG_DOMAIN"]+"/accounts/edit" %>
 <% end %>
 
 <% content_for :guide do %>

@@ -26,7 +26,7 @@ class Blockchain < ActiveRecord::Base
 end
 
 # == Schema Information
-# Schema version: 20180708171446
+# Schema version: 20181230002741
 #
 # Table name: blockchains
 #
@@ -42,6 +42,8 @@ end
 #  status               :string(255)      not null
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
+#  username             :string(255)
+#  secret               :string(255)
 #
 # Indexes
 #

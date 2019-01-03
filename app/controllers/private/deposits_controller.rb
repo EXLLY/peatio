@@ -19,6 +19,32 @@ module Private
       end
     end
 
+    def upload
+      file = params[:file].tempfile
+      f = File.read(file)
+
+      data = JSON.parse(f)
+      Rails.logger.debug data
+      if MwDepositSession.find_by(txid: data["id"]) != nil
+        return head 409
+      end
+      currency = Currency.find_by(id: params[:currency])
+      base_factor = currency.base_factor
+      amount = data["amount"] / base_factor
+      fee = data["fee"] / base_factor
+      deposit_session = MwDepositSession.create(
+        txid: data["id"],
+        member_id: current_user.id,
+        received_payload: data.to_json(),
+        amount: amount
+      )
+      deposit = Deposits::MwCoin.create!(member_id: current_user.id, amount: amount, fee: fee, currency_id: currency.id)
+
+      # TODO: Enqueue
+
+      head 201
+    end
+
   private
 
     def currency

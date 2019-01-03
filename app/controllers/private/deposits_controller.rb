@@ -32,13 +32,14 @@ module Private
       base_factor = currency.base_factor
       amount = data["amount"] / base_factor
       fee = data["fee"] / base_factor
-      deposit_session = MwDepositSession.create(
+      deposit = Deposits::MwCoin.create!(member_id: current_user.id, amount: amount, fee: fee, currency_id: currency.id)
+      deposit_session = MwDepositSession.create!(
         txid: data["id"],
         member_id: current_user.id,
         received_payload: data.to_json(),
-        amount: amount
+        amount: amount,
+        deposit: deposit,
       )
-      deposit = Deposits::MwCoin.create!(member_id: current_user.id, amount: amount, fee: fee, currency_id: currency.id)
 
       # TODO: Enqueue
 

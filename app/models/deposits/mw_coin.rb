@@ -1,7 +1,6 @@
 # encoding: UTF-8
 # frozen_string_literal: true
 
-
 module Deposits
   class MwCoin < Deposit
     include HasOneBlockchainThroughCurrency

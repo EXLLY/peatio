@@ -60,6 +60,10 @@ daemon 'amqp:deposit_coin_address',
        script:   'amqp_daemon.rb',
        arguments: %w[ deposit_coin_address ]
 
+daemon 'amqp:deposit_mwupload',
+       script:   'amqp_daemon.rb',
+       arguments: %w[ deposit_mwupload ]
+
 daemon 'amqp:slave_book',
        script:   'amqp_daemon.rb',
        arguments: %w[ slave_book  ]

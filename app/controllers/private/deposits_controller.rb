@@ -39,9 +39,7 @@ module Private
         amount: amount
       )
       deposit = Deposits::MwCoin.create!(member_id: current_user.id, amount: amount, fee: fee, currency_id: currency.id)
-
-      # TODO: Enqueue
-
+      AMQPQueue.enqueue(:deposit_mwupload, id: id)
       head 201
     end
 

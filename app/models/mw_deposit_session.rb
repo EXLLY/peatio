@@ -1,5 +1,4 @@
 class MwDepositSession < ActiveRecord::Base
-  after_commit { AMQPQueue.enqueue(:deposit_mwupload, id: id) }
 end
 
 # == Schema Information

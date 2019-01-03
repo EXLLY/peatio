@@ -81,8 +81,6 @@ class Deposit < ActiveRecord::Base
   end
 
   def collect!
-    Rails.logger.debug{ "mwupload enqueued."}
-    AMQPQueue.enqueue(:deposit_mwupload, id: id)
     if coin?
       if currency.is_erc20?
         AMQPQueue.enqueue(:deposit_collection_fees, id: id)

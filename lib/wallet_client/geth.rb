@@ -142,7 +142,7 @@ module WalletClient
           'Content-Type' => 'application/json' }
       response.assert_success!
       response = JSON.parse(response.body)
-      Rails.logger.debug { "method = #{method}, Params = #{params}, Response = #{reponse}" }
+      #Rails.logger.debug { "method = #{method}, Params = #{params}, Response = #{response}" }
       response['error'].tap { |error| raise Error, error.inspect if error }
       response
     end

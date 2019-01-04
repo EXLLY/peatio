@@ -43,6 +43,8 @@ queue:
   deposit_coin_address:
     name: peatio.deposit.coin.address
     durable: true
+  deposit_mwupload:
+    name: peatio.deposit.mwupload
   trade_error:
     name: peatio.trades.errors
 
@@ -73,6 +75,8 @@ binding:
     queue: deposit_collection
   deposit_coin_address:
     queue: deposit_coin_address
+  deposit_mwupload:
+    queue: deposit_mwupload
   trade_error:
     queue: trade_error
 

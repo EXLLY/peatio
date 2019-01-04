@@ -7,34 +7,38 @@ module WalletClient
             super
             @endpoint = URI.parse(wallet.uri)
         end
-        
+
         def receive_tx(data)
             post('/v1/wallet/foreign/receive_tx', data)
         end
 
         def block_height()
             get('/v1/wallet/owner/node_height')
-        end 
+        end
 
         private
         def get(path)
             conn = Faraday.new(url: @endpoint)
             conn.basic_auth(wallet.username, wallet.secret)
-            response = conn.get(path)    
+            response = conn.get(path)
             response.assert_success!
-            JSON.parse(response.body)            
+            JSON.parse(response.body)
         end
 
         def post(path, data = nil)
             conn = Faraday.new(url: @endpoint)
             conn.basic_auth(wallet.username, wallet.secret)
-            if data 
+            if data
                 data = data.compact
             end
-            response = conn.post(path, data)    
-            response.assert_success!
-            JSON.parse(response.body)            
-        end
+            response = conn.post \
+                path,
+                data.to_json,
+                { 'Accept'       => 'application/json',
+                  'Content-Type' => 'application/json' }
 
+            response.assert_success!
+            JSON.parse(response.body)
+        end
     end
 end

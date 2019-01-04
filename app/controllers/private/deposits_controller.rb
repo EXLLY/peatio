@@ -39,7 +39,7 @@ module Private
         amount: amount
       )
       deposit = Deposits::MwCoin.create!(member_id: current_user.id, amount: amount, fee: fee, currency_id: currency.id)
-      
+
       # TODO: Enqueue
 
       head 201

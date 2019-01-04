@@ -46,6 +46,14 @@ module Private
       head 201
     end
 
+    def download
+      response = MwDepositSession.find_by(member_id: current_user.id, deposit_id: params[:deposit_id])
+      if response == nil
+        return head 404
+      end
+      send_data response["response_payload"], :filename => "#{response.deposit_id}.response.json"
+    end
+
   private
 
     def currency

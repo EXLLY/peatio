@@ -44,6 +44,8 @@ Peatio::Application.routes.draw do
       end
     end
 
+    get 'deposits/:currency/download/:deposit_id', to: 'deposits#download'
+
     resources 'withdraws/:currency', controller: 'withdraws', as: 'withdraw', only: %i[ create destroy ]
 
     get '/history/orders' => 'history#orders', as: :order_history

@@ -18,9 +18,24 @@ module Deposits
       self.address = CashAddr::Converter.to_cash_address(address)
     end
 
+    def response_file_url
+        session = MwDepositSession.find_by(deposit_id: id)
+        if session == nil
+            Rails.logger.error "Can not find deposit session,  deposit id: #{id}"
+            return nil
+        end
+        if session.response_payload == nil
+            return nil
+        end
+        return "/deposits/#{currency_id}/download/#{id}"
+    end
+
     def as_json(*)
-      super.merge!(transaction_url: transaction_url,
-                   confirmations:   confirmations)
+      super.merge!(
+        response_file_url: response_file_url,
+        transaction_url: transaction_url,
+        confirmations:   confirmations
+      )
     end
 
     def as_json_for_event_api

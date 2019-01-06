@@ -1,13 +1,16 @@
-<li class="nav-item dropdown">
-  <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-    <img src="/languages/<%= I18n.locale %>.png"/>
-    <b class="caret"></b>
-  </a>
-  <div id="languages" class="dropdown-menu">
-    <% I18n.available_locales.each do |lang| %>
-      <a class="dropdown-item" href="?lang=<%= lang %>">
-        <img src="/languages/<%= lang || I18n.locale %>.png"/>
-      </a>
-    <% end %>
-  </div>
-</li>
+<!--<li class="nav-item dropdown">-->
+<!--  <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">-->
+<!--    <img src="/languages/<%#= I18n.locale %>.png"/>-->
+<!--    <b class="caret"></b>-->
+<!--  </a>-->
+<!--  <div id="languages" class="dropdown-menu">-->
+<%# I18n.available_locales.each do |lang| %>
+<!--      <a class="dropdown-item" href="?lang=<%#= lang %>">-->
+<!--        <img src="/languages/<%#= lang || I18n.locale %>.png"/>-->
+<!--      </a>-->
+<%# end %>
+<!--  </div>-->
+<!--</li>-->
+<% I18n.available_locales.each do |lang| %>
+<a class="menu-language" href="?lang=<%= lang %>"><%= t('header.english') %></a>
+<% end %>

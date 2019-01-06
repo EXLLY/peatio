@@ -118,6 +118,7 @@ en:
               less: Blance Less
         withdraw:
           account_balance_is_poor: Account balance is insufficient
+          exceed_withdraw_limit: Exceed withdraw limit, you can increase the limit by doing the KYC verification
           attributes:
             password:
               match: invalid

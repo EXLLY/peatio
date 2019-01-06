@@ -30,6 +30,7 @@ class Withdraw < ActiveRecord::Base
   validates :rid, :aasm_state, presence: true
   validates :txid, uniqueness: { scope: :currency_id }, if: :txid?
   validates :block_number, allow_blank: true, numericality: { greater_than_or_equal_to: 0, only_integer: true }
+  validate :exceed_withdraw_limit
 
   scope :completed, -> { where(aasm_state: COMPLETED_STATES) }
 
@@ -138,6 +139,11 @@ class Withdraw < ActiveRecord::Base
       blockchain_txid: txid }
   end
 
+  def exceed_withdraw_limit
+    if member.level <= 2 && !quick?
+      errors.add :base, -> { I18n.t('activerecord.errors.models.withdraw.exceed_withdraw_limit') }
+    end
+  end
 private
 
   def lock_funds

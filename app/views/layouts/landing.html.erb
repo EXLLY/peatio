@@ -53,6 +53,7 @@
           <a href="#"><%= image_tag "logo.png" %></a>
         </div>
         <div class="col-md-8 text-right">
+          <%= render partial: 'shared/header_profile_setting' if current_user %>
           <% unless current_user %>
             <% provider = ENV['OAUTH2_SIGN_IN_PROVIDER'] %>
             <a href="/auth/<%= provider == 'google' ? 'google_oauth2' : provider %>">LOGIN</a>

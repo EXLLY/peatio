@@ -40,7 +40,8 @@ private
       elsif ENV[key]
         redirect_to ENV[key]
       else
-        redirect_to settings_url
+        # redirect_to settings_url
+        redirect_to ENV['BARONG_DOMAIN']
       end
     end
   end

@@ -179,6 +179,18 @@ footer a.sns-weibo{background-image: url(asset_path('home/sns_weibo.png'));}
   display:table-cell;
   vertical-align: middle;
 }
+.mask-fixed .panel.panel-default{border-width:0;}
+.mask-fixed .panel-heading{
+  background-color:#2e96f0;
+  border-color:#2e96f0;
+}
+.mask-fixed .panel-heading .panel-title{
+  text-align: center;
+  color:#FFF;
+}
+.mask-fixed .panel-body{
+  padding:25px;
+}
 .secure-url{
   color:#a1a2a2;
   padding-top:144px;
@@ -269,6 +281,9 @@ footer a.sns-weibo{background-image: url(asset_path('home/sns_weibo.png'));}
 .profile-head-item.estimated{}
 .profile-head-item.available strong{color:#4ac26e;}
 .profile-head-item.inorders strong{color:#ef6351;}
+.profile-body{
+  padding-bottom:16px;
+}
 .profile-sidebar{
   margin-right:16px;
   width:200px;
@@ -291,7 +306,7 @@ footer a.sns-weibo{background-image: url(asset_path('home/sns_weibo.png'));}
   background-color: #2e96f0;
 }
 .profile-content{
-  min-height:200px;
+  min-height:300px;
   background-color:#fff;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);

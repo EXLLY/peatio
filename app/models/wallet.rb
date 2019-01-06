@@ -12,9 +12,10 @@ class Wallet < ActiveRecord::Base
   ENUMERIZED_KINDS = { deposit: 100, fee: 200, hot: 310, warm: 320, cold: 330 }.freeze
   enumerize :kind, in: ENUMERIZED_KINDS, scope: true
 
-  GATEWAYS = %w[bitcoind bitcoincashd litecoind geth dashd rippled bitgo].freeze
+  GATEWAYS = %w[bitcoind bitcoincashd litecoind geth dashd rippled bitgo grin].freeze
   SETTING_ATTRIBUTES = %i[ uri
                            secret
+                           username
                            bitgo_test_net
                            bitgo_wallet_id
                            bitgo_wallet_passphrase
@@ -28,7 +29,7 @@ class Wallet < ActiveRecord::Base
   belongs_to :blockchain, foreign_key: :blockchain_key, primary_key: :key
 
   validates :name,    presence: true, uniqueness: true
-  validates :address, presence: true
+  validates :address, presence: {if: Proc.new{|w| w.gateway != 'grin'}}
 
   validates :status,  inclusion: { in: %w[active disabled] }
   validates :gateway, inclusion: { in: GATEWAYS }

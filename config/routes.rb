@@ -39,7 +39,12 @@ Peatio::Application.routes.draw do
 
     resources 'deposits/:currency', controller: 'deposits', as: 'deposit', only: %i[ destroy ] do
       collection { post 'gen_address' }
+      collection do
+        post :upload
+      end
     end
+
+    get 'deposits/:currency/download/:deposit_id', to: 'deposits#download'
 
     resources 'withdraws/:currency', controller: 'withdraws', as: 'withdraw', only: %i[ create destroy ]
 

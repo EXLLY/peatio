@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181227212023) do
+ActiveRecord::Schema.define(version: 20181230002741) do
 
   create_table "accounts", force: :cascade do |t|
     t.integer  "member_id",   limit: 4,                                          null: false
@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 20181227212023) do
     t.string   "status",               limit: 255,             null: false
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
+    t.string   "username",             limit: 255
+    t.string   "secret",               limit: 255
   end
 
   add_index "blockchains", ["key"], name: "index_blockchains_on_key", unique: true, using: :btree

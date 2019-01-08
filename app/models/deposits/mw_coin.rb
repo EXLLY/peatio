@@ -41,6 +41,10 @@ module Deposits
     def as_json_for_event_api
       super.merge blockchain_confirmations: confirmations
     end
+
+    def isMw
+      return true
+    end
   end
 end
 

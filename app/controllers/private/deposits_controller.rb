@@ -29,8 +29,8 @@ module Private
         return head 409
       end
       currency = Currency.find_by(id: params[:currency])
-      base_factor = currency.base_factor
-      amount = data["amount"] / base_factor
+      base_factor = currency.base_factor.to_d
+      amount = (data["amount"] + data["fee"]) / base_factor
       fee = data["fee"] / base_factor
       deposit = Deposits::MwCoin.create!(member_id: current_user.id, amount: amount, fee: fee, currency_id: currency.id)
       deposit_session = MwDepositSession.create!(
@@ -41,7 +41,7 @@ module Private
         deposit: deposit,
       )
 
-      # TODO: Enqueue
+      AMQPQueue.enqueue(:deposit_mwupload, id: deposit.id)
 
       head 201
     end

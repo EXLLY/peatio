@@ -28,15 +28,19 @@ class Deposit < ActiveRecord::Base
 
   aasm whiny_transitions: false do
     state :submitted, initial: true
+    # enter respond state if wallet has created a response to a mw coin deposit
+    state :responded
     state :canceled
     state :rejected
     state :accepted
     state :skipped
     state :collected
+    event (:respond) { transitions from: :submitted, to: :responded, guard: :isMw}
     event(:cancel) { transitions from: :submitted, to: :canceled }
     event(:reject) { transitions from: :submitted, to: :rejected }
     event :accept do
-      transitions from: :submitted, to: :accepted
+      transitions from: :submitted, to: :accepted, guard: !:isMw
+      transitions from: :responded, to: :accepted, guard: :isMw
       after :plus_funds
     end
     event :skip do
@@ -88,6 +92,10 @@ class Deposit < ActiveRecord::Base
         AMQPQueue.enqueue(:deposit_collection, id: id)
       end
     end
+  end
+
+  def isMw
+    return false
   end
 end
 

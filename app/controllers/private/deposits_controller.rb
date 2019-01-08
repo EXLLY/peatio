@@ -20,13 +20,10 @@ module Private
     end
 
     def upload
-      file = params[:file].tempfile
-      f = File.read(file)
-
-      data = JSON.parse(f)
+      data = JSON.parse(params[:fileJSON])
       Rails.logger.debug data
       if MwDepositSession.find_by(txid: data["id"]) != nil
-        return head 409
+        return head 409 # TODO @Steve or @jsaints - return an error message here to display on the page
       end
       currency = Currency.find_by(id: params[:currency])
       base_factor = currency.base_factor.to_d

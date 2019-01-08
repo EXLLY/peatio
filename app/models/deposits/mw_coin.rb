@@ -43,7 +43,7 @@ module Deposits
     end
 
     def isMw
-        return true
+      return true
     end
   end
 end

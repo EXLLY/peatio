@@ -10,7 +10,9 @@ MAINTAINER lbellet@heliostech.fr
 # See https://docs.docker.com/engine/reference/commandline/build/#set-build-time-variables-build-arg
 #
 ARG RAILS_ENV=production
-ENV RAILS_ENV=${RAILS_ENV} APP_HOME=/home/app
+ENV RAILS_ENV=${RAILS_ENV} \
+    APP_HOME=/home/app \
+    SECRET_KEY_BASE='ec7ffa7f1e53b586f2ad072518776a153b14f40ea77e5aa17b9b3ab5145ac29f018c2da13c626102b2d7c749b60f8fc81798579a7e820b96821d431b5fc144c3'
 
 # Allow customization of user ID and group ID (it's useful when you use Docker bind mounts)
 ARG UID=1000

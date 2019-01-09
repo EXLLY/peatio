@@ -9,6 +9,9 @@
 
     <% stylesheet = content_for?(:stylesheet) ? yield(:stylesheet) : 'application' %>
     <%= stylesheet_link_tag stylesheet, media: 'all' %>
+    <%= stylesheet_link_tag 'global' %>
+    <%= stylesheet_link_tag 'index'%>
+    <%= stylesheet_link_tag ''%>
     <%= custom_stylesheet_link_tag_for :main %>
 
     <%= include_gon %>
@@ -16,16 +19,11 @@
     <%= javascript_include_tag 'application' %>
     <%= yield(:scripts) if content_for?(:scripts) %>
   </head>
-
-  <body class="ui-radius" data-lang="<%= locale_name %>" id="<%= body_id %>">
-
-    <div id="wrap">
+  <body class="ui-radius g-background" data-lang="<%= locale_name %>" id="<%= body_id %>">
+    <div class="flex-box vertical home-index">
       <%= content_for?(:header) ? yield(:header) : render('shared/header') %>
       <%= content_for?(:frame) ? yield(:frame) : render('shared/frame') %>
-
-      <div id="push"></div>
+      <%= content_for?(:footer) ? yield(:footer) : render('shared/footer') %>
     </div>
-    <%= content_for?(:footer) ? yield(:footer) : render('shared/footer') %>
-
-  </body>
+    </body>
 </html>

@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
   def destroy
     destroy_member_sessions(current_user.id)
     reset_session
-    redirect_to root_path
+    barong_signout
   end
 
 private
@@ -40,12 +40,18 @@ private
       elsif ENV[key]
         redirect_to ENV[key]
       else
-        redirect_to settings_url
+        # redirect_to settings_url
+        redirect_to ENV['BARONG_DOMAIN']
       end
     end
   end
 
   def redirect_on_unsuccessful_sign_in
     redirect_to root_path, alert: t('.error')
+  end
+
+  def barong_signout
+    barlong_signout_url = ENV["BARONG_DOMAIN"] + "/accounts/sign_out"
+    redirect_to barlong_signout_url
   end
 end

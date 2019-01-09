@@ -118,6 +118,7 @@ en:
               less: Blance Less
         withdraw:
           account_balance_is_poor: Account balance is insufficient
+          exceed_withdraw_limit: Exceed withdraw limit, you can increase the limit by doing the KYC verification
           attributes:
             password:
               match: invalid
@@ -571,10 +572,10 @@ en:
     admin: Admin Panel
     market: Trade
     settings: Profile
-    signout: Exit
-    funds: Funds
+    signout: LOG OUT
+    funds: FUNDS
     getstart: Markets
-    history: History
+    history: ORDERS
     order_history: Order History
     trade_history: Trade History
     account_history: Account History
@@ -583,6 +584,7 @@ en:
     total: Total
     deposit: Deposit
     withdraw: Withdraw
+    english: ENGLISH
   admin_header:
     deposits: Deposits
     withdraws: Withdraws

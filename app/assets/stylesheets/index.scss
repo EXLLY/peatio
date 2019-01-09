@@ -45,7 +45,7 @@
   color:#707277;
   font-size:12px;
   border-radius:5em;
-  background-image: url(asset_path('profile/warning..png'));
+  background-image: url(asset_path('profile/warning.png'));
   background-repeat: no-repeat;
   background-position: 5px 50%;
   background-size: auto 70%;
@@ -204,11 +204,11 @@
 }
 .profile-security > a.profile-security-password{
   border-left-color:#2e96f0;
-  background-image: url(asset_path('profile/password..png'));
+  background-image: url(asset_path('profile/password.png'));
 }
 .profile-security > a.profile-security-google{
   border-left-color:#ef6351;
-  background-image: url(asset_path('profile/google..png'));
+  background-image: url(asset_path('profile/google.png'));
 }
 .profile-security > a > div{
   display:table-cell;
@@ -238,7 +238,7 @@ a.secret-link{
   padding-right:22px;
   color:#469ef1;
   text-decoration: underline;
-  background-image: url(asset_path('profile/secret-link..png'));
+  background-image: url(asset_path('profile/secret-link.png'));
   background-position: 100% 50%;
   background-repeat: no-repeat;
 }
@@ -394,7 +394,7 @@ a.secret-link{
   border-width: 1px;
   border-color: #dddddd;
   background-color: #fafafa;
-  background-image: url(asset_path('profile/upload-drag..png'));
+  background-image: url(asset_path('profile/upload-drag.png'));
   background-position: 50% 50%;
   background-repeat: no-repeat;
 }
@@ -474,10 +474,10 @@ a.secret-link{
   -webkit-transform: rotate(45deg);
 }
 .profile-kyc-link > a.profile-kyc-link-pro{
-  background-image: url(asset_path('profile/profile..png'));
+  background-image: url(asset_path('profile/profile.png'));
 }
 .profile-kyc-link > a.profile-kyc-link-doc{
-  background-image: url(asset_path('profile/document..png'));
+  background-image: url(asset_path('profile/document.png'));
 }
 .profile-kyc-link a > div{
   display: table-cell;

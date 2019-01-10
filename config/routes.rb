@@ -80,7 +80,6 @@ Peatio::Application.routes.draw do
 
   get '/swagger', to: 'swagger#index'
 
-
   mount APIv2::Mount => APIv2::Mount::PREFIX
   mount ManagementAPIv1::Mount => ManagementAPIv1::Mount::PREFIX
 end

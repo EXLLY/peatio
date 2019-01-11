@@ -57,7 +57,7 @@ module BlockchainService
               next
             end
             
-            Rails.logger.info "deposit is #{deposit[:address]}. value is #{deposit[:amount]}"
+            Rails.logger.info "Identified deposit #{deposit[:address]} on chain. amount is #{deposit[:amount]}"
 
             deposits << {
               txid:    output_commit,

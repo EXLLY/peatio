@@ -8,10 +8,15 @@ module BlockchainClient
         @endpoint = URI.parse(blockchain.server)        
       end
 
-      def block_height()
+      def latest_block_number()
         data = get('/v1/chain')
         data['height']
       end 
+
+      def get_block(height)
+        current_block = height || 0
+        data = get("/v1/blocks/#{current_block}")
+      end
 
       private
 

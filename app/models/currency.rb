@@ -156,6 +156,10 @@ class Currency < ActiveRecord::Base
           : OPTIONS_ATTRIBUTES.map(&:to_s).map{|v| [v, '']}.to_h
   end
 
+  def wallet(kind)
+    Wallet.find_by(blockchain_key: blockchain_key, currency_id: id, kind: kind)
+  end
+
   attr_readonly :id,
                 :code,
                 :type

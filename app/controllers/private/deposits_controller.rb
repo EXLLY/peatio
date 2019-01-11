@@ -20,17 +20,14 @@ module Private
     end
 
     def upload
-      file = params[:file].tempfile
-      f = File.read(file)
-
-      data = JSON.parse(f)
+      data = JSON.parse(params[:fileJSON])
       Rails.logger.debug data
       if MwDepositSession.find_by(txid: data["id"]) != nil
-        return head 409
+        return head 409 # TODO @Steve or @jsaints - return an error message here to display on the page
       end
       currency = Currency.find_by(id: params[:currency])
-      base_factor = currency.base_factor
-      amount = data["amount"] / base_factor
+      base_factor = currency.base_factor.to_d
+      amount = (data["amount"] + data["fee"]) / base_factor
       fee = data["fee"] / base_factor
       deposit = Deposits::MwCoin.create!(member_id: current_user.id, amount: amount, fee: fee, currency_id: currency.id)
       deposit_session = MwDepositSession.create!(
@@ -41,7 +38,7 @@ module Private
         deposit: deposit,
       )
 
-      # TODO: Enqueue
+      AMQPQueue.enqueue(:deposit_mwupload, id: deposit.id)
 
       head 201
     end

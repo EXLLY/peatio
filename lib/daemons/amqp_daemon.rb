@@ -4,6 +4,8 @@
 require File.join(ENV.fetch('RAILS_ROOT'), 'config', 'environment')
 
 raise "bindings must be provided." if ARGV.size == 0
+STDOUT.sync = true
+STDERR.sync = true
 
 logger = Rails.logger
 

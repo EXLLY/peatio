@@ -69,6 +69,7 @@ module BlockchainService
       end
     end
 
+    #TODO implement correct withdraw logic, the following implementation is no op
     def build_withdrawals(block_json)
       height = block_json.fetch('header').fetch('height')
       block_json
@@ -76,18 +77,18 @@ module BlockchainService
         .each_with_object([]) do |block_txn, withdrawals|
           output_commit = block_txn.fetch('commit')
 
-          withdraw_address_where(currency: :grin , txid: output_commit) do |withdraw|
-              amount = withdraw[:amount]
-              Rails.logger.info "withdrawl is #{withdraw}"
+          withdraw_address_where(currency: :grin , txid: -1) do |withdraw|
+            amount = withdraw[:amount]
+            Rails.logger.info "withdrawl is #{withdraw}"
 
-          withdrawals << {
-            txid:    output_commit,
-            address: output_commit,
-            amount: amount,
-            block_number: height
-          }   
+            withdrawals << {
+              txid:    output_commit,
+              address: output_commit,
+              amount: amount,
+              block_number: height
+            }   
           end
-      end
+        end
     end
 
 

@@ -7,11 +7,9 @@
     <%= render 'shared/sentry' %>
     <%= csrf_meta_tags %>
 
-    <% stylesheet = content_for?(:stylesheet) ? yield(:stylesheet) : 'application' %>
-    <%= stylesheet_link_tag stylesheet, media: 'all' %>
+    <%= stylesheet_link_tag 'bootstrap.min'%>
     <%= stylesheet_link_tag 'global' %>
     <%= stylesheet_link_tag 'index'%>
-    <%= stylesheet_link_tag ''%>
     <%= custom_stylesheet_link_tag_for :main %>
 
     <%= include_gon %>
@@ -19,11 +17,11 @@
     <%= javascript_include_tag 'application' %>
     <%= yield(:scripts) if content_for?(:scripts) %>
   </head>
-  <body class="ui-radius g-background" data-lang="<%= locale_name %>" id="<%= body_id %>">
-    <div class="flex-box vertical home-index">
+  <body  data-lang="<%= locale_name %>" id="<%= body_id %>">
+    <div class="flex-box vertical profile">
       <%= content_for?(:header) ? yield(:header) : render('shared/header') %>
       <%= content_for?(:frame) ? yield(:frame) : render('shared/frame') %>
       <%= content_for?(:footer) ? yield(:footer) : render('shared/footer') %>
     </div>
-    </body>
+  </body>
 </html>

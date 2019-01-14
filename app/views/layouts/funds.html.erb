@@ -8,6 +8,8 @@
     <link href="/favicon.ico" rel="shortcut icon" />
     <% stylesheet = content_for?(:stylesheet) ? yield(:stylesheet) : 'application' %>
     <%= stylesheet_link_tag stylesheet, media: 'all' %>
+    <%= stylesheet_link_tag 'global' %>
+    <%= stylesheet_link_tag 'index'%>
     <%= custom_stylesheet_link_tag_for :main %>
 
     <%= include_gon %>
@@ -17,26 +19,11 @@
   </head>
 
   <body id="<%= body_id %>" data-lang="<%= "#{locale_name}" %>">
-
-    <div id="wrap">
-      <%- if content_for?(:header) %>
-        <%= yield(:header) %>
-      <%- else %>
-        <%= render 'shared/header' %>
-      <%- end %>
-
-      <div class='container'>
-        <%= yield %>
-      </div>
-      <div id="push"></div>
+    <div class="flex-box vertical profile">
+      <%= content_for?(:header) ? yield(:header) : render('shared/header') %>
+      <%= content_for?(:frame) ? yield(:frame) : render('shared/frame') %>
+      <%= content_for?(:footer) ? yield(:footer) : render('shared/footer') %>
     </div>
-
-    <%- if content_for?(:footer) %>
-      <%= yield(:footer) %>
-    <%- else %>
-      <%= render 'shared/footer' %>
-    <%- end %>
-
   </body>
 </html>
 

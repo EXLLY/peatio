@@ -1,11 +1,13 @@
-<% content_for :frame do %>
+<% content_for :guide do %>
   <div class="container history-pages">
-    <%= render 'tabs', active: :order %>
-
-    <div class="card card-default" id="orders">
-      <div class="card-body">
-        <div class="col-24">
-          <table class="table table-condensed table-striped">
+    <%= render partial: 'shared/overview' if current_user %>
+    <div class="row">
+      <div class="flex-box horizontal profile-body">
+        <!-- profile-sidebar -->
+        <div class="flex-content">
+          <%= render 'tabs', active: :order %>
+          <div class="profile-tabs-content">
+          <table class="data-table text-center">
             <thead>
               <tr>
                 <th><%= t('.id') %></th>
@@ -19,7 +21,7 @@
                 <th><%= t('.timestamp') %></th>
               </tr>
             </thead>
-            <tbody class="list">
+            <tbody>
               <%= render partial: 'order', collection: @orders %>
             </tbody>
           </table>
@@ -27,6 +29,7 @@
             <%= paginate @orders %>
           </div>
         </div>
+      </div>
       </div>
     </div>
   </div>

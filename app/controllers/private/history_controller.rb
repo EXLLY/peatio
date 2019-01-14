@@ -3,7 +3,7 @@
 
 module Private
   class HistoryController < BaseController
-
+    before_action :updateTotalAssets
     helper_method :tabs
 
     def account

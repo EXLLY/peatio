@@ -1,0 +1,24 @@
+<div class="row profile-head">
+  <div class="col-md-4">
+    <div class="profile-head-item estimated">
+      <h5>ESTIMATED VALUE</h5>
+      <div><strong><%= format("%.2f",@btcTotal ) %></strong><small>BTC</small></div>
+      <p>&asymp; <%= format("%.2f", @total) %> USD</p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="profile-head-item available">
+      <h5>AVAILABLE</h5>
+      <div><strong><%= format("%.2f",@btcSum )%></strong><small>BTC</small></div>
+      <p>&asymp; <%= format("%.2f",@sum ) %> USD</p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="profile-head-item inorders">
+      <h5>IN ORDERS</h5>
+      <div><strong><%= format("%.2f",@btcLockSum )%></strong><small>BTC</small></div>
+      <p>&asymp; <%= format("%.2f",@lockSum )%> USD</p>
+    </div>
+  </div>
+</div>
+<!-- profile-head -->

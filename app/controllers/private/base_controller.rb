@@ -30,5 +30,40 @@ module Private
       response.headers["Pragma"] = "no-cache"
       response.headers["Expires"] = "Sat, 03 Jan 2009 00:00:00 GMT"
     end
+
+    def updateTotalAssets
+      displayCurrency = gon.display_currency
+      sum = 0
+      btcSum=0
+      lockSum = 0
+      btcLockSum=0
+      for currency,account in gon.accounts
+        if currency == displayCurrency
+          sum += account[:balance]
+          lockSum += account[:locked]
+        else
+          markeId = currency + displayCurrency
+          ticker =  gon.tickers[markeId]
+          sum += account[:balance]* ticker[:last] if ticker
+          lockSum += account[:locked] * ticker[:last] if ticker
+        end
+        if currency == "btc"
+          btcSum += account[:balance]
+          btcLockSum += account[:locked]
+        else
+          btcMarkeId = currency + "btc"
+          btcTicker =  gon.tickers[btcMarkeId]
+          btcSum += account[:balance]* btcTicker[:last] if btcTicker
+          btcLockSum += account[:locked] * btcTicker[:last] if btcTicker
+        end
+      end
+      @sum = sum
+      @lockSum = lockSum
+      @total = sum + lockSum
+
+      @btcSum = btcSum
+      @btcLockSum = btcLockSum
+      @btcTotal = btcSum + btcLockSum
+    end
   end
 end

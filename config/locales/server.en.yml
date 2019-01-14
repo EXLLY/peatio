@@ -567,10 +567,10 @@ en:
       short: "%m-%d %H:%M"
       default: "%m/%d/%Y %H:%M"
   header:
-    home: Home
+    home: HOME
     dashboard: Dashboard
     admin: Admin Panel
-    market: Trade
+    market: EXCHANGE
     settings: Profile
     signout: LOG OUT
     funds: FUNDS

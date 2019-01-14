@@ -22,6 +22,7 @@ Rails.application.config.assets.precompile.concat \
     swagger_ui.css
     swagger_ui_print.css
     swagger_ui_screen.css
+    bootstrap.min.css
     global.css
     index.css
   ]

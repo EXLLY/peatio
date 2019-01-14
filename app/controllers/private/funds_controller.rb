@@ -8,6 +8,7 @@ module Private
     layout 'funds'
 
     before_action :trading_must_be_permitted!
+    before_action :updateTotalAssets, only: [:index]
 
     def index
       @currencies        = Currency.enabled.sort
@@ -24,6 +25,7 @@ module Private
       current_user.accounts.enabled.each(&:payment_address)
       render nothing: true
     end
+
   end
 end
 

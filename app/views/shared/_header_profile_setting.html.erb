@@ -1,4 +1,6 @@
-<!--<a class="menu-orders" href="/history/orders"><%#= t('header.history')%></a>-->
-<!--<a class="menu-funds" href="/funds"><%#= t('header.funds')%></a>-->
+<a class="menu-orders" href="<%=root_path %>"><%= t('header.home')%></a>
+<a class="menu-orders" href="<%=trading_path(current_market.id) if current_user%>"><%= t('header.market')%></a>
+<a class="menu-orders" href="/history/orders"><%= t('header.history')%></a>
+<a class="menu-funds" href="/funds"><%= t('header.funds')%></a>
 <a class="menu-account" href="<%= ENV['BARONG_DOMAIN']%>"><%= current_user.email %></a>
 <a class="menu-logout" href="<%= main_app.signout_path %>"><%= t('header.signout') %></a>

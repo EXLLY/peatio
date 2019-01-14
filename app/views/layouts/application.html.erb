@@ -7,11 +7,9 @@
     <%= render 'shared/sentry' %>
     <%= csrf_meta_tags %>
 
-    <% stylesheet = content_for?(:stylesheet) ? yield(:stylesheet) : 'application' %>
-    <%= stylesheet_link_tag stylesheet, media: 'all' %>
+    <%= stylesheet_link_tag 'bootstrap.min'%>
     <%= stylesheet_link_tag 'global' %>
     <%= stylesheet_link_tag 'index'%>
-    <%= stylesheet_link_tag ''%>
     <%= custom_stylesheet_link_tag_for :main %>
 
     <%= include_gon %>
